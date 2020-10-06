@@ -3,10 +3,14 @@ const express = require("express");
 const router = express.Router();
 const Word = require("../../models/Word");
 
-router.get("/", (req, res) => {
-  Word.find()
-    .sort({ date: -1 })
-    .then((items) => res.json(items));
+router.get("/", async (req, res) => {
+  try {
+    const words = await Word.find();
+    if (!words) throw Error("No Words Found");
+    res.status(200).json(words);
+  } catch (e) {
+    res.status(400).json({ msg: e.message });
+  }
 });
 router.post("/", (req, res) => {
   const newWord = new Word({

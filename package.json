@@ -4,8 +4,8 @@
   "description": "Translations for Ethiopians",
   "main": "server.js",
   "engines": {
-    "node": "v12.18.0",
-    "npm": "6.14.4"
+    "node": "v12.19.0",
+    "npm": "6.14.8"
   },
   "scripts": {
     "client-install": "npm install --prefix client",
@@ -15,10 +15,11 @@
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "author": "Nasser Ahmed",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "body-parser": "^1.19.0",
     "concurrently": "^5.3.0",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "mongoose": "^5.10.7"
   }

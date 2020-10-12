@@ -1,3 +1,10 @@
+body {
+  background-color: aquamarine;
+}
+.wordOutput {
+  background-color: #343a3fe0;
+  color: aliceblue;
+}
 .myContainer {
   display: flex;
   justify-content: space-between;
@@ -15,4 +22,10 @@
 .fade-exit-active {
   opacity: 0.01;
   transition: opacity 1000ms ease-in;
+}
+.fColor {
+  color: #343a3f;
+}
+.sColor {
+  color: #7effd3;
 }

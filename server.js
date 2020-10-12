@@ -1,25 +1,30 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
 const path = require("path");
-const words = require("./routes/api/words");
-
+const config = require("config");
+// const words = require("./routes/api/words");
 //Start the server
 const app = express();
 
 //BODY PARSER MIDDLEWARE
-app.use(bodyParser.json());
+app.use(express.json());
 
 //DB CONFIG
-const db = require("./config/keys").mongoURI;
+const db = config.get("mongoURI");
 
 //CONNECT TO MONGO
 mongoose
-  .connect(db, { useUnifiedTopology: true, useNewUrlParser: true })
+  .connect(db, {
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+    useCreateIndex: true,
+  })
   .then(() => console.log("MongoDB connected..."))
   .catch((err) => console.log(err));
+app.use("/api/words", require("./routes/api/words"));
+app.use("/api/users", require("./routes/api/users"));
+app.use("/api/auth", require("./routes/api/auth"));
 
-app.use("/api/words", words);
 //Serve static assets if in application
 if (process.env.NODE_ENV === "production") {
   //Set static folder

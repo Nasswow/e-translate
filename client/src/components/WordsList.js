@@ -17,14 +17,14 @@ class WordsList extends Component {
     return (
       <Container>
         <ListGroup>
-          <ListGroupItem className="myContainer">
+          <ListGroupItem className="myContainer wordOutput">
             <h6>Amharic Word</h6>
             <h6>English Translation</h6>
           </ListGroupItem>
           <TransitionGroup className="words-list">
             {words.map(({ _id, word, translation }) => (
               <CSSTransition key={_id} timeout={500} classNames="fade">
-                <ListGroupItem className="myContainer">
+                <ListGroupItem className="myContainer wordOutput">
                   <Container className="myContainer">
                     <div>{word}</div>
                     <div>{translation}</div>

@@ -1,7 +1,12 @@
 const express = require("express");
 
 const router = express.Router();
+const auth = require("../../middleware/auth");
 const Word = require("../../models/Word");
+
+//@route GET api/words
+//@desc Get all words
+//@access Private
 
 router.get("/", async (req, res) => {
   try {
@@ -12,14 +17,22 @@ router.get("/", async (req, res) => {
     res.status(400).json({ msg: e.message });
   }
 });
-router.post("/", (req, res) => {
+//@route POST api/words
+//@desc Add a word
+//@access Private
+
+router.post("/", auth, (req, res) => {
   const newWord = new Word({
     word: req.body.word,
     translation: req.body.translation,
   });
   newWord.save().then((word) => res.json(word));
 });
-router.delete("/:id", (req, res) => {
+//@route DELETE api/words/:id
+//@desc Delete a word
+//@access Private
+
+router.delete("/:id", auth, (req, res) => {
   Word.findById(req.params.id)
     .then((word) => word.remove().then(() => res.json({ Success: true })))
     .catch((err) => res.status(404).json({ Success: false }));

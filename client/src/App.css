@@ -1,9 +1,13 @@
-body {
-  background-color: aquamarine;
+.App {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .wordOutput {
-  background-color: #343a3fe0;
+  background-color: #707274b3;
   color: aliceblue;
+  margin-bottom: 2px;
 }
 .myContainer {
   display: flex;

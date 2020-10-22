@@ -11,12 +11,15 @@ import {
 } from "reactstrap";
 import { connect } from "react-redux";
 import { addWord } from "../actions/wordActions";
-
+import PropTypes from "prop-types";
 class WordModal extends Component {
   state = {
     modal: false,
     word: "",
     translation: "",
+  };
+  static propTypes = {
+    isAuthenticated: PropTypes.bool,
   };
   toggle = () => {
     this.setState({
@@ -42,13 +45,22 @@ class WordModal extends Component {
   render() {
     return (
       <div>
-        <Button
-          color="dark"
-          style={{ marginBottom: "2rem" }}
-          onClick={this.toggle}
-        >
-          Add Word
-        </Button>
+        {this.props.isAuthenticated ? (
+          <Button
+            color="dark"
+            style={{ marginBottom: "2rem" }}
+            onClick={this.toggle}
+          >
+            Add Word
+          </Button>
+        ) : (
+          <div>
+            <h1>Welcome to our Translation Service,</h1>
+            <h5 className="mb-3 ml-4">
+              Please login or register to access the site!
+            </h5>
+          </div>
+        )}
 
         <Modal isOpen={this.state.modal} toggle={this.toggle}>
           <ModalHeader toggle={this.toggle}>Add To Words</ModalHeader>
@@ -88,5 +100,6 @@ class WordModal extends Component {
 const mapStateToProps = (state) => ({
   word: state.word,
   translation: state.translation,
+  isAuthenticated: state.auth.isAuthenticated,
 });
 export default connect(mapStateToProps, { addWord })(WordModal);

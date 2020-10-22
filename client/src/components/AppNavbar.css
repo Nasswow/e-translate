@@ -1,0 +1,6 @@
+.e-navbar {
+  position: fixed;
+  width: 100%;
+  background-color: #fd700d;
+  z-index: 100;
+}

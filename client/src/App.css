@@ -5,13 +5,22 @@
   justify-content: space-between;
 }
 .wordOutput {
-  background-color: #707274b3;
+  background-color: #0a7aabd2;
   color: aliceblue;
   margin-bottom: 2px;
 }
 .myContainer {
   display: flex;
   justify-content: space-between;
+  color: white;
+}
+.link {
+  color: white;
+}
+.link:hover {
+  color: white;
+  text-decoration: none;
+  opacity: 0.75;
 }
 .fade-enter {
   opacity: 0.01;

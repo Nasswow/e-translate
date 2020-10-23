@@ -34,7 +34,7 @@ class WordsList extends Component {
                   <ListGroupItem className="myContainer wordOutput">
                     <Container className="myContainer">
                       <div>
-                        <Link>{word}</Link>
+                        <Link className="link">{word}</Link>
                       </div>
                       <div>{translation}</div>
                       {/* <div>
